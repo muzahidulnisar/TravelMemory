@@ -1,0 +1,17 @@
+[Unit]
+Description=frontend service
+Requires=getty.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/travelmemory/frontend
+ExecStart=/home/ubuntu/travelmemory/frontend/run-frontend.sh
+Restart=always
+RestartSec=5
+Environment=PATH=/usr/bin:/usr/local/bin
+ExecStartPre=/usr/bin/npm install
+ExecStartPre=/usr/bin/npm run build
+
+[Install]
+WantedBy=multi-user.target
