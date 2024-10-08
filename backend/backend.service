@@ -1,0 +1,14 @@
+[Unit]
+Description=Backend service
+Requires=getty.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory= /home/ubuntu/travelmemory/backend
+ExecStart= node ./index.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
